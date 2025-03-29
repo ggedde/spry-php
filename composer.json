@@ -1,0 +1,23 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "ggedde/spry-php",
+    "type": "project",
+    "description": "The starter kit for SpryPHP.",
+    "keywords": ["spryphp", "spry-php", "framework", "php", "toolkit"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "SpryPhp\\": "spryphp/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
