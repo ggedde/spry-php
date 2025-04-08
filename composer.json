@@ -1,0 +1,31 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "ggedde/spry-php",
+    "type": "project",
+    "description": "The skeleton application for the Spry PHP Kit.",
+    "keywords": ["spryphp", "spry-php", "framework", "php", "toolkit"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "ggedde/spry-php-kit": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-create-project-cmd": [
+            "php -r \"file_put_contents('config.php', str_replace('__AUTH_KEY__', sha1(random_bytes(9).microtime()), file_get_contents('config.php')));\"",
+            "php -r \"file_put_contents('config.php', str_replace('__AUTH_PASSWORD__', md5(random_bytes(9).microtime()), file_get_contents('config.php')));\"",
+            "php -r \"if (!is_dir('App/Controller')) mkdir('App/Controller');\"",
+            "php -r \"if (!is_dir('App/Model')) mkdir('App/Model');\""
+        ]
+    }
+}
