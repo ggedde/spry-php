@@ -5,12 +5,14 @@
 
 namespace App\View\Layout;
 
+use App\View\Assets\JsSessionTimer;
 use SpryPhp\Provider\Route;
 use SpryPhp\Provider\Session;
 use SpryPhp\Model\View;
 use App\View\Common\Alerts;
 use App\View\Common\Csrf;
 use App\View\Common\Head;
+use App\View\Common\ModalSessionExtend;
 
 /**
  * Class for Dashboard Layout
@@ -24,8 +26,8 @@ class Dashboard
      */
     public function __construct(View $view)
     {
-        if (!Session::getUser()) {
-            Route::goTo('/login');
+        if (!Session::getUser() && defined('APP_URI_LOGIN')) {
+            Route::goTo(APP_URI_LOGIN);
         }
 
         ?><?php new Head(); ?>
@@ -76,7 +78,19 @@ class Dashboard
             </div>
 
             <!-- Session Timeout Modal -->
-            <?php new View('components/modalSession'); ?>
+            <div id="session-timeout-modal" class="modal bg-blur-sm bounce">
+                <article class="outline shadow g-1 mw-300 mx-auto">
+                    <header>
+                        <h5>Your Session is About to Expire</h5>
+                    </header>
+                    <div class="p-3 text-center">
+                        <button type="button" class="primary" onclick="sessionExtend();">Keep me logged in</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Session Timer and Timeout Modal -->
+            <?php new JsSessionTimer(); ?>
         </body>
 
         </html>

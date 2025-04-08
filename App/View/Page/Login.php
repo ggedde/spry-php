@@ -27,7 +27,7 @@ class Login extends View
                     </header>
                     <div class="p-3 primary show-invalid">
                         <label class="lg my-3">
-                            <input type="hidden" name="csrf" value="<?= Session::getCsrf(); ?>" required>
+                            <input type="hidden" name="csrf" value="<?= Session::getCsrf(); ?>">
                             <input type="password" name="password" placeholder=" " autocomplete="current-password" required>
                             <sup class="color-primary">Password</sup>
                         </label>

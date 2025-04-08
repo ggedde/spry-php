@@ -23,13 +23,13 @@ class Page
     public function __construct(View $view, $title = '')
     {
         ?><?php new Head($title); ?>
-            <body class="layout-page pt-2">
-                <div class="alert-container">
-                    <?php new Alerts(); ?>
-                </div>
-                <?php $view->render(); ?>
-            </body>
-        </html>
+
+        <body class="layout-page pt-2">
+            <?php new Alerts(); ?>
+            <?php $view->render(); ?>
+
+        </body>
+</html>
         <?php
     }
 }
