@@ -5,6 +5,7 @@
  */
 
 use SpryPhp\Provider\Alerts;
+use SpryPhp\Provider\Db;
 use SpryPhp\Provider\Functions;
 use SpryPhp\Provider\Request;
 use SpryPhp\Provider\Session;
@@ -15,36 +16,39 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 // Prettify Exceptions Messages and Stack Traces.
 Functions::formatExceptions();
 
-// Load Local Environment Vars
+// Load Local Environment Vars.
 if (file_exists(dirname(__DIR__).'/.env')) {
     Functions::loadEnvFile(dirname(__DIR__).'/.env');
 }
 
-// Include Config
+// Include Config.
 require_once __DIR__.'/config.php';
 
-// Configure Debug Settings
+// Configure Debug Settings.
 Functions::setDebug();
 
-// Check Host and Protocol
+// Check Host and Protocol.
 Functions::forceHost();
 
-// Start Sessions
-$sessionId = Session::setup();
+// Start and Setup Sessions.
+Session::setup();
 
 // Check if Admin is Logged In and if so then update their session.
-if ($sessionId === Session::makeIdFrom('admin'.APP_AUTH_PASSWORD)) {
+if (Session::getId() === Session::makeIdFrom('admin'.APP_AUTH_PASSWORD)) {
     Session::update((object) ['type' => 'admin', 'name' => 'Admin']);
 }
 
-// Setup Request Data
+// Setup Request Data.
 Request::setup();
 
-// Grab Alerts from Session
+// Grab Alerts from Session.
 Alerts::setup();
 
 // Check the App for Issues.
 Functions::checkAppIntegrity();
 
-// Call Routes
+// Check and Update DB Schema.
+// Db::updateSchema(APP_PATH_DB_SCHEMA_FILE);
+
+// Call Routes.
 require_once APP_PATH_ROUTES;

@@ -22,8 +22,8 @@
     "prefer-stable": true,
     "scripts": {
         "post-create-project-cmd": [
-            "php -r \"file_put_contents('config.php', str_replace('__AUTH_KEY__', sha1(random_bytes(9).microtime()), file_get_contents('config.php')));\"",
-            "php -r \"file_put_contents('config.php', str_replace('__AUTH_PASSWORD__', md5(random_bytes(9).microtime()), file_get_contents('config.php')));\"",
+            "php -r \"file_put_contents('src/config.php', str_replace('__AUTH_KEY__', bin2hex(random_bytes(32)), file_get_contents('src/config.php')));\"",
+            "php -r \"file_put_contents('src/config.php', str_replace('__AUTH_PASSWORD__', bin2hex(random_bytes(12)), file_get_contents('src/config.php')));\"",
             "php -r \"if (!is_dir('App/Controller')) mkdir('App/Controller');\"",
             "php -r \"if (!is_dir('App/Model')) mkdir('App/Model');\""
         ]
