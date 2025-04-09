@@ -10,7 +10,6 @@ define('APP_HOST', getenv('APP_HOST'));
 define('APP_HTTPS', true);
 define('APP_PATH', rtrim(dirname(__DIR__), '/'));
 define('APP_PATH_SRC', APP_PATH.'/src');
-define('APP_PATH_DATA', APP_PATH.'/data');
 define('APP_PATH_DB_SCHEMA_FILE', APP_PATH_SRC.'/schema.php');
 define('APP_PATH_ROUTES', APP_PATH_SRC.'/routes.php');
 define('APP_PATH_PUBLIC', APP_PATH.'/public');
