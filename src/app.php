@@ -10,27 +10,27 @@ use SpryPhp\Provider\Request;
 use SpryPhp\Provider\Session;
 
 // Include Auto Loader
-require_once __DIR__.'/vendor/autoload.php';
+require_once dirname(__DIR__).'/vendor/autoload.php';
 
 // Prettify Exceptions Messages and Stack Traces.
 Functions::formatExceptions();
 
 // Load Local Environment Vars
-if (file_exists(__DIR__.'/.env')) {
-    Functions::loadEnvFile(__DIR__.'/.env');
+if (file_exists(dirname(__DIR__).'/.env')) {
+    Functions::loadEnvFile(dirname(__DIR__).'/.env');
 }
 
 // Include Config
 require_once __DIR__.'/config.php';
 
 // Configure Debug Settings
-Functions::initiateDebug();
+Functions::setDebug();
 
 // Check Host and Protocol
 Functions::forceHost();
 
 // Start Sessions
-$sessionId = Session::start();
+$sessionId = Session::setup();
 
 // Check if Admin is Logged In and if so then update their session.
 if ($sessionId === Session::makeIdFrom('admin'.APP_AUTH_PASSWORD)) {
@@ -41,7 +41,10 @@ if ($sessionId === Session::makeIdFrom('admin'.APP_AUTH_PASSWORD)) {
 Request::setup();
 
 // Grab Alerts from Session
-Alerts::getFromSession();
+Alerts::setup();
+
+// Check the App for Issues.
+Functions::checkAppIntegrity();
 
 // Call Routes
 require_once APP_PATH_ROUTES;

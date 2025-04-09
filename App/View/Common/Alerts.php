@@ -15,7 +15,7 @@ class Alerts
      */
     public function __construct()
     {
-        $alerts = \SpryPhp\Provider\Alerts::getAlerts();
+        $alerts = \SpryPhp\Provider\Alerts::get();
 
         if (!empty($alerts)) {
             ?>

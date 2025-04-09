@@ -9,7 +9,6 @@ namespace App\View\Common;
 
 use App\View\Assets\JsForceReloadOnBack;
 use App\View\Assets\JsPingQueue;
-use App\View\Assets\JsSessionTimer;
 
 /**
  * Class for Head View

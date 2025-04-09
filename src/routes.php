@@ -14,6 +14,7 @@ use SpryPhp\Provider\Alerts;
 use SpryPhp\Provider\Request;
 use SpryPhp\Provider\Route;
 use SpryPhp\Provider\Session;
+use SpryPhp\Provider\Store;
 
 /**
  * GET Home Page
@@ -62,7 +63,7 @@ if (defined('APP_URI_LOGIN') && defined('APP_URI_ADMIN')) {
 
         // Check Admin Password, If incorrect then redirect them to Login with Error.
         if (empty($params->password) || $params->password !== constant('APP_AUTH_PASSWORD')) {
-            Alerts::addAlert('error', 'Incorrect Password');
+            Alerts::set('error', 'Incorrect Password');
 
             return Route::goTo(APP_URI_LOGIN);
         }
@@ -86,9 +87,9 @@ if (defined('APP_URI_LOGIN') && defined('APP_URI_ADMIN')) {
  */
 if (defined('APP_URI_LOGOUT')) {
     Route::POST(APP_URI_LOGOUT, function () {
-        Session::delete();
+        Session::clear();
         if (!empty(Request::$params->session) && Request::$params->session === 'expired') {
-            Alerts::addAlert('error', 'Your Session has Expired');
+            Alerts::set('error', 'Your Session has Expired');
         }
 
         return Route::goTo(APP_URI_LOGIN);
@@ -102,7 +103,8 @@ if (defined('APP_URI_QUEUE')) {
     Route::POST(APP_URI_QUEUE, function () {
 
         // Do All Queue Actions Here:
-        Alerts::removeAlerts();
+        Alerts::clear();
+        Store::clear();
 
         return 'Success';
     });

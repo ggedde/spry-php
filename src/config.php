@@ -3,17 +3,17 @@
  * App Config Definitions
  */
 
-define('APP_AUTH_KEY', '__AUTH_KEY__'); // A unique key for authentication and salts.  ### WARNING - Changing this could Invalidate all Sessions.
+define('APP_AUTH_KEY', '__AUTH_KEY__'); // A unique key for authentication and salts.  ### WARNING - Changing this could Invalidate all Sessions and break all Encrypted values if using this as the Key.
 define('APP_AUTH_PASSWORD', '__AUTH_PASSWORD__');
 define('APP_DEBUG', true);
 define('APP_HOST', getenv('APP_HOST'));
 define('APP_HTTPS', true);
-define('APP_PATH', rtrim(__DIR__, '/'));
-define('APP_PATH_ROOT', APP_PATH);
-define('APP_PATH_DATA', APP_PATH_ROOT.'/data');
-define('APP_PATH_DB_SCHEMA_FILE', APP_PATH.'/schema.php');
-define('APP_PATH_ROUTES', APP_PATH.'/routes.php');
-define('APP_PATH_PUBLIC', APP_PATH_ROOT.'/public');
+define('APP_PATH', rtrim(dirname(__DIR__), '/'));
+define('APP_PATH_SRC', APP_PATH.'/src');
+define('APP_PATH_DATA', APP_PATH.'/data');
+define('APP_PATH_DB_SCHEMA_FILE', APP_PATH_SRC.'/schema.php');
+define('APP_PATH_ROUTES', APP_PATH_SRC.'/routes.php');
+define('APP_PATH_PUBLIC', APP_PATH.'/public');
 define('APP_PATH_PUBLIC_ASSETS', APP_PATH_PUBLIC.'/assets');
 define('APP_REQUEST_VERIFY_CSRF', true);
 define('APP_SESSION_COOKIE_NAME', 'app-session');
