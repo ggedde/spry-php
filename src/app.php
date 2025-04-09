@@ -9,6 +9,7 @@ use SpryPhp\Provider\Db;
 use SpryPhp\Provider\Functions;
 use SpryPhp\Provider\Request;
 use SpryPhp\Provider\Session;
+use SpryPhp\Provider\Store;
 
 // Include Auto Loader
 require_once dirname(__DIR__).'/vendor/autoload.php';
@@ -29,6 +30,9 @@ Functions::setDebug();
 
 // Check Host and Protocol.
 Functions::forceHost();
+
+// Setup Store.
+Store::setup();
 
 // Start and Setup Sessions.
 Session::setup();
