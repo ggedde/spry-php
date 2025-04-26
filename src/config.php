@@ -4,9 +4,9 @@
  */
 
 define('APP_START', microtime(true));
-define('APP_AUTH_KEY', 'asdfasdfasdf'); // A unique key for authentication and salts.  ### WARNING - Changing this could Invalidate all Sessions and break all Encrypted values if using this as the Key.
-define('APP_AUTH_PASSWORD', 'asdfasdfasdfas');
-define('APP_DEBUG', true);
+define('APP_AUTH_KEY', '__AUTH_KEY__'); // A unique key for authentication and salts.  ### WARNING - Changing this could Invalidate all Sessions and break all Encrypted values if using this as the Key.
+define('APP_AUTH_PASSWORD', '__AUTH_PASSWORD__');
+define('APP_DEBUG', getenv('APP_ENVIRONMENT') !== 'production');
 define('APP_HOST', getenv('APP_HOST'));
 define('APP_HTTPS', true);
 define('APP_PATH', rtrim(dirname(__DIR__), '/'));
