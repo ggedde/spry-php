@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 /**
  * Routes file
  */
@@ -10,11 +10,9 @@ use App\View\Page\Home;
 use App\View\Page\Login;
 use App\View\Page\View404;
 use SpryPhp\Model\Validator;
-use SpryPhp\Provider\Alerts;
 use SpryPhp\Provider\Request;
 use SpryPhp\Provider\Route;
 use SpryPhp\Provider\Session;
-use SpryPhp\Provider\Store;
 
 /**
  * GET Home Page
@@ -59,17 +57,17 @@ if (defined('APP_URI_LOGIN') && defined('APP_URI_ADMIN')) {
 
         $params = (new Validator(Request::$params))
             ->param('password', 'Password')->required()->minLength(8)
-        ->valid();
+        ->getValidParams();
 
         // Check Admin Password, If incorrect then redirect them to Login with Error.
         if (empty($params->password) || $params->password !== constant('APP_AUTH_PASSWORD')) {
-            Alerts::set('error', 'Incorrect Password');
+            Session::addAlert('error', 'Incorrect Password');
 
             return Route::goTo(APP_URI_LOGIN);
         }
 
-        // Set Session.
-        Session::set('admin'.APP_AUTH_PASSWORD, (object) ['type' => 'admin', 'name' => 'Admin']);
+        // Login User
+        Session::loginUser((object) ['type' => 'admin', 'name' => 'Admin']);
 
         // If Session is set correctly, then redirect to Admin Page.
         if (Session::getUser()) {
@@ -87,10 +85,7 @@ if (defined('APP_URI_LOGIN') && defined('APP_URI_ADMIN')) {
  */
 if (defined('APP_URI_LOGOUT')) {
     Route::POST(APP_URI_LOGOUT, function () {
-        Session::clear();
-        if (!empty(Request::$params->session) && Request::$params->session === 'expired') {
-            Alerts::set('error', 'Your Session has Expired');
-        }
+        Session::logoutUser();
 
         return Route::goTo(APP_URI_LOGIN);
     });
@@ -103,8 +98,10 @@ if (defined('APP_URI_QUEUE')) {
     Route::POST(APP_URI_QUEUE, function () {
 
         // Do All Queue Actions Here:
-        Alerts::clear();
-        Store::clear();
+        Session::clearAlerts();
+
+        // Check and Update DB Schema.
+        // Db::updateSchema(APP_PATH_DB_SCHEMA_FILE);
 
         return 'Success';
     });

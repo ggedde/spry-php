@@ -16,7 +16,7 @@ class Login extends View
     /**
      * Render the Login View
      */
-    public function render()
+    public function render(): void
     {
         ?>
         <form method="post" onsubmit="formSubmit(event)">

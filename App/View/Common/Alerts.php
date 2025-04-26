@@ -5,6 +5,8 @@
 
 namespace App\View\Common;
 
+use SpryPhp\Provider\Session;
+
 /**
  * Class for Alerts View
  */
@@ -15,7 +17,7 @@ class Alerts
      */
     public function __construct()
     {
-        $alerts = \SpryPhp\Provider\Alerts::get();
+        $alerts = Session::getAlerts();
 
         if (!empty($alerts)) {
             ?>

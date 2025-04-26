@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+/**
+ * SpryPHP CLI Tool
+ * See `php spry help`
+ */
+
+use SpryPhp\Provider\Functions;
+use SpryPhp\Provider\Commands;
+
+// Include Auto Loader
+require_once __DIR__.'/vendor/autoload.php';
+
+if (file_exists(__DIR__.'/.env')) {
+    Functions::loadEnvFile(__DIR__.'/.env');
+}
+
+// Include Config.
+require_once __DIR__.'/src/config.php';
+
+// Check the App for Issues.
+Functions::checkAppIntegrity();
+
+// Run Commands
+Commands::run();
+exit;

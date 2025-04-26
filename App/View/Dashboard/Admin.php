@@ -15,7 +15,7 @@ class Admin extends View
     /**
      * Render the Login View
      */
-    public function render()
+    public function render(): void
     {
         ?>
 

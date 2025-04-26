@@ -34,7 +34,7 @@ class JsSessionTimer
             let _sessionTimer = null;
             function sessionStartTimer() {
                 const timeBefore = 60; // Seconds.
-                const ttl = <?= Session::getTTL(); ?>;
+                const ttl = <?= intval(APP_SESSION_TTL); ?>;
                 clearTimeout(_sessionTimer);
 
                 if ('<?= Session::getCsrf() ?? ''; ?>' && ttl > 0) {

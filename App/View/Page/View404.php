@@ -15,7 +15,7 @@ class View404 extends View
     /**
      * Render the 404 View
      */
-    public function render()
+    public function render(): void
     {
         ?>
         <h1 class="text-center color-grey">404 | Page not found.</h1>
