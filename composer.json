@@ -7,7 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "ggedde/spry-php-kit": "dev-main"
+        "ggedde/spry-php-kit": "~0.9.4"
     },
     "autoload": {
         "psr-4": {
