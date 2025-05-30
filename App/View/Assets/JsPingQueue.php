@@ -20,7 +20,7 @@ class JsPingQueue
         if (defined('APP_URI_QUEUE')) {
             ?>
 
-            <script>
+        <script>
             async function pingQueue() {
                 try {
                     const response = await fetch('<?= APP_URI_QUEUE; ?>', {
@@ -43,7 +43,7 @@ class JsPingQueue
             window.addEventListener('load', () => {
                 pingQueue();
             });
-            </script>
+        </script>
             <?php
         }
     }

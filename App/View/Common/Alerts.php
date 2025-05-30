@@ -21,7 +21,7 @@ class Alerts
 
         if (!empty($alerts)) {
             ?>
-            <div class="alerts-container">
+            <div class="alerts-container mb-3">
                 <?php foreach ($alerts as $alert) { ?>
                     <div class="expand alert-container from-center">
                         <div>

@@ -16,14 +16,14 @@ class JsForceReloadOnBack
     public function __construct()
     {
         ?>
-        
+
         <script>
-        // Check if using Back Button and if so make sure page renders.
-        window.addEventListener("pageshow", function(event) {
-            if (event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) {
-                window.location.reload();
-            }
-        });
+            // Check if using Back Button and if so make sure page renders.
+            window.addEventListener("pageshow", function(event) {
+                if (event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) {
+                    window.location.reload();
+                }
+            });
         </script>
         <?php
     }

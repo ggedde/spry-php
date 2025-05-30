@@ -7,7 +7,7 @@ namespace App\View\Layout;
 
 use SpryPhp\Model\View;
 use App\View\Common\Head;
-use App\View\Common\Alerts;
+use App\View\Common\Footer;
 
 /**
  * Class for Page Layout
@@ -17,18 +17,22 @@ class Page
     /**
      * Construct the Page Layout
      *
-     * @param View   $view
-     * @param string $title
+     * @param View $view
      */
-    public function __construct(View $view, $title = '')
+    public function __construct(View $view)
     {
-        ?><?php new Head($title); ?>
-
-        <body class="layout-page pt-2">
-            <?php new Alerts(); ?>
-            <?php $view->render(); ?>
-
-        </body>
+        new Head($view->meta());
+        echo PHP_EOL;
+        ?>
+    <body class="layout-page m-4">
+        <?php
+            echo PHP_EOL;
+            $view->render();
+            echo PHP_EOL;
+            new Footer($view->meta());
+            echo PHP_EOL;
+        ?>
+    </body>
 </html>
         <?php
     }

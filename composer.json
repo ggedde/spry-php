@@ -7,7 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "ggedde/spry-php-kit": "~0.9.4"
+        "ggedde/spry-php-kit": "dev-main"
     },
     "autoload": {
         "psr-4": {
@@ -27,5 +27,8 @@
             "php -r \"if (!is_dir('App/Controller')) mkdir('App/Controller');\"",
             "php -r \"if (!is_dir('App/Model')) mkdir('App/Model');\""
         ]
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1"
     }
 }

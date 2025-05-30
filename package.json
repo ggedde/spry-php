@@ -1,0 +1,29 @@
+{
+  "name": "spry-php-project",
+  "version": "0.9.5",
+  "author": "ggedde",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ggedde/spry-php"
+  },
+  "dependencies": {
+    "@ggedde/spry-css": "github:ggedde/spry-css#v3",
+    "@ggedde/spry-js": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "lightningcss-cli": "^1.30.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "watch": "bun run watch-css",
+    "watch-css": "node_modules/.bin/sass --watch --style compressed src/assets/scss/main.scss public/assets/main.min.css",
+    "import-spry-js": "cp node_modules/@ggedde/spry-js/dist/spry.js public/assets/spry.js",
+    "build": "bun run build-css | bun run import-spry-js",
+    "build-css": "node_modules/.bin/sass --style compressed --no-source-map src/assets/scss/main.scss | node_modules/.bin/lightningcss -m -o public/assets/main.min.css",
+    "sync": "node_modules/.bin/browser-sync start --config local-config.js",
+    "dev": "bun run watch | bun run sync"
+  }
+}

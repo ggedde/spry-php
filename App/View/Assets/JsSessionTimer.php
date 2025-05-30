@@ -20,7 +20,7 @@ class JsSessionTimer
         if (defined('APP_URI_LOGOUT') && defined('APP_URI_LOGIN')) {
             ?>
 
-            <script>
+        <script>
             // Extend Session
             async function sessionExtend() {
                 const response = await pingQueue();
@@ -61,7 +61,7 @@ class JsSessionTimer
             window.addEventListener('load', () => {
                 sessionStartTimer();
             });
-            </script>
+        </script>
             <?php
         }
     }

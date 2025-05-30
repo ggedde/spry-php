@@ -17,8 +17,6 @@ class Csrf
      */
     public function __construct()
     {
-        ?>
-        <input type="hidden" name="csrf" value="<?= Session::getCsrf(); ?>">
-        <?php
+        ?><input type="hidden" name="csrf" value="<?= Session::getCsrf(); ?>"><?php echo PHP_EOL;
     }
 }

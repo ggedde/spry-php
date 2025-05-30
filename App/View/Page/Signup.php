@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /**
- * Login View
+ * Signup View
  */
 
 namespace App\View\Page;
@@ -11,9 +11,9 @@ use SpryPhp\Model\PageMeta;
 use SpryPhp\Model\View;
 
 /**
- * Class for Login View
+ * Class for Signup View
  */
-class Login extends View
+class Signup extends View
 {
     /**
      * Get the Page Head Meta
@@ -23,13 +23,13 @@ class Login extends View
     public function meta(): PageMeta
     {
         return new PageMeta(
-            title:       'Login',
-            description: 'Login into '.APP_TITLE,
+            title:       'Signup',
+            description: 'Signup into '.APP_TITLE,
         );
     }
 
     /**
-     * Render the Login View
+     * Render the Signup View
      */
     public function render(): void
     {
@@ -43,7 +43,7 @@ class Login extends View
                 <?php new Csrf(); ?>
                 <article class="card outline clip shadow r-2 g-0">
                     <header>
-                        <h4>Login</h4>
+                        <h4>Signup</h4>
                     </header>
                     <div class="column g-3 p-4 primary show-invalid">
                         <label class="lg">
