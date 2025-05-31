@@ -40,6 +40,12 @@ return [
             'name' => 'name',
         ],
         [
+            'name' => 'type',
+            'type' => "enum('user','admin')",
+            'null' => false,
+            'default' => 'user',
+        ],
+        [
             'name' => 'status',
             'type' => "enum('ACTIVE','INACTIVE')",
             'null' => false,

@@ -9,6 +9,9 @@ use App\View\Common\Alerts;
 use App\View\Common\Csrf;
 use SpryPhp\Model\PageMeta;
 use SpryPhp\Model\View;
+use SpryPhp\Provider\Functions;
+use SpryPhp\Provider\Request;
+use SpryPhp\Provider\Session;
 
 /**
  * Class for Login View
@@ -33,6 +36,8 @@ class Login extends View
      */
     public function render(): void
     {
+        $loginEmail = Session::get('loginEmail');
+
         ?>
         <div class="m-auto" style="max-width: 400px;">
             <?php
@@ -48,7 +53,7 @@ class Login extends View
                     <div class="column g-3 p-4 primary show-invalid">
                         <label class="lg">
                             <small class="block mb-2">Email</small>
-                            <input type="email" name="email" placeholder=" " autocomplete="email" required>
+                            <input type="email" name="email" placeholder=" " autocomplete="email" value="<?= $loginEmail && is_string($loginEmail) ? Functions::escAttr($loginEmail) : ''; ?>" required>
                             <small class="invalid color-error xsf pt-2">Invalid Email Address</small>
                         </label>
 

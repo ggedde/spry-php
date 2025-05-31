@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /**
- * Dashboard Layout
+ * AdminLayout Layout
  */
 
 namespace App\View\Layout;
@@ -15,19 +15,19 @@ use App\View\Common\Head;
 use App\View\Common\ModalSessionExtend;
 
 /**
- * Class for Dashboard Layout
+ * Class for AdminLayout Layout
  */
-class Dashboard
+class AdminLayout
 {
     /**
-     * Construct the Dashboard Layout
+     * Construct the AdminLayout Layout
      *
      * @param View $view
      */
     public function __construct(View $view)
     {
         if (!Session::getUser() && defined('APP_URI_LOGIN')) {
-            Route::goTo(APP_URI_LOGIN);
+            Route::redirect(APP_URI_LOGIN);
         }
 
         $user = Session::getUser();
@@ -53,6 +53,7 @@ class Dashboard
                                                 <svg class="icon sm mr-2" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3v10z" /></svg>
                                                 Components
                                             </a>
+
                                         </li>
                                     </ul>
                                 </nav>

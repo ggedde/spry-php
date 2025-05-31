@@ -9,7 +9,7 @@ define('APP_AUTH_PASSWORD', '__AUTH_PASSWORD__');
 define('APP_ADMIN_EMAIL', '');
 define('APP_ADMIN_PASSWORD', '');
 define('APP_DEBUG', getenv('APP_ENVIRONMENT') !== 'production');
-define('APP_HOST', getenv('APP_HOST'));
+define('APP_HOST', getenv('APP_HOST') ?: (!empty($_SERVER['HTTP_HOST']) && is_string($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ''));
 define('APP_HTTPS', true);
 define('APP_PATH', rtrim(dirname(__DIR__), '/'));
 define('APP_PATH_APP', APP_PATH.'/App');
